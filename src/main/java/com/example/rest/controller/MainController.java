@@ -34,13 +34,13 @@ public class MainController {
         return "users";
     }
 
+    @GetMapping("/user")
+    public String getUserPage(Model model, Principal principal) {
 
-  /*  @GetMapping("admin/new")
-    public String newUser(Model model,Principal principal) {
+        model.addAttribute("principal", userService.getUserByName(principal.getName()).getRolesString());
+        return "user";
+    }
 
-
-        return "new";
-    }*/
 
 
 

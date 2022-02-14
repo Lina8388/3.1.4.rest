@@ -51,7 +51,7 @@
         <nav class="col-md-2 m-0 p-0 pt-4 ">
             <div class="sidebar-sticky">
                 <br>
-                <a href="/admin" class="nav-link  btn-block" role="button">Admin</a>
+                <a href="/users" class="nav-link  btn-block" role="button">Admin</a>
                 <a href="/user" class="btn btn-primary btn-block active" role="button">User</a>
             </div>
         </nav>
@@ -86,14 +86,7 @@
                                 </tr>
                                 </thead>
 
-                                <tr th:each="user :${login}">
-                                    <td th:text="${user.getId()}"></td>
-                                    <td th:text="${user.getName()}"></td>
-                                    <td th:text="${user.getSurname()}"></td>
-                                    <td th:text="${user.getAge()}"></td>
-                                    <td th:text="${user.getEmail()}"></td>
-                                    <td th:text="${user.getRolesString()}"></td>
-                                </tr>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </div>
@@ -103,6 +96,41 @@
         </div>
     </div>
 </div>
-<script src="../static/app.js"></script>
+<script>
+
+
+    const url = 'http://localhost:8080/admin'
+
+
+
+
+
+    /*таблица*/
+    const getPost = document.querySelector('tbody');
+
+    let output ='';
+
+    fetch(url, {
+        mode: "no-cors",
+    })
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(user =>{
+                output+=`<tr>
+                                    <td >${user.id}</td>
+                                    <td >${user.name}</td>
+                                    <td >${user.surname}</td>
+                                    <td >${user.age}</td>
+                                    <td >${user.email}</td>
+<td > `
+                for (const r of user.roles) {
+                    output += r.role + " ";
+                }
+                output+=`</td></tr>`;
+            });
+
+            getPost.innerHTML = output;
+        })
+</script>
 </body>
 </html>

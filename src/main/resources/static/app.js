@@ -57,66 +57,7 @@ const getAllUsers = users => {
     userList.innerHTML = result;
 }
 
-/*const getUserInfo = e => {
-    const row = e.target.parentNode.parentNode;
-    idForm = Number(row.children[0].innerHTML);
-    const modal = (e.target.className === 'btn btn-info btnEdit') ? modalEdit : modalDelete;
-    fetch(url)
-        .then(res => res.json())
-        .then( users => {
-            users.forEach(user => {
-                if(user.id === idForm) {
-                    modal._element.querySelector('.form-body').innerHTML = `
-                            <div class="form-check w-75 mx-auto mb-3">
-                                <input class="form-check-input" type="checkbox" id="enabled" value="${user.enabled}">
-                                <label class="form-check-label" for="enabled">Разрешена авторизация</label>
-                            </div>
-                            <div class="form-group text-center w-75 mx-auto">
-                                <label for="username" class="col-form-label font-weight-bolder">Логин</label>
-                                <input type="text" class="form-control" id="username" value="${user.username}">
-                            </div>
-                            <div class="form-group text-center w-75 mx-auto">
-                                <label for="password" class="col-form-label font-weight-bolder">Пароль</label>
-                                <input type="password" class="form-control" id="password" value="${user.password}">
-                            </div>
-                            <div class="form-group text-center w-75 mx-auto">
-                                <label for="firstName" class="col-form-label font-weight-bolder">Имя</label>
-                                <input type="text" class="form-control" id="firstName" value="${user.firstName}">
-                            </div>
-                            <div class="form-group text-center w-75 mx-auto">
-                                <label for="lastName" class="col-form-label font-weight-bolder">Фамилия</label>
-                                <input type="text" class="form-control" id="lastName" value="${user.lastName}">
-                            </div>
-                            <div class="form-group text-center w-75 mx-auto">
-                                <label for="age" class="col-form-label font-weight-bolder">Возраст</label>
-                                <input type="number" class="form-control" id="age" value="${user.age}">
-                            </div>
-                        ` + selectRoles.innerHTML;
 
-                    modal._element.querySelector('#enabled').checked = user.enabled;
-                    modal._element.querySelector('.list-role').children[0].htmlFor = 'listRoleNames';
-                    modal._element.querySelector('.list-role').children[1].id = 'listRoleNames';
-                    user.roles.forEach(role => {
-                        for (let option of modal._element.querySelector('select').children) {
-                            if (option.value === role.name) {
-                                option.selected = true;
-                            }
-                        }
-                    });
-                }
-            })
-        })
-        .catch(error => console.log(error))
-    modal.show();
-}*/
-
-/*const getRoles = select => {
-    let roles = []
-    select.forEach(option => {
-        roles.push({id:option.attributes.role_id.value, name:option.value})
-    })
-    return roles;
-}*/
 
 const openModal = (element, event, selector) => {
     element.addEventListener(event, e => {
@@ -128,12 +69,7 @@ const openModal = (element, event, selector) => {
 }
 
 
-/*
-fetch(url)
-    .then(res => res.json())
-    .then(data => getAllUsers(data))
-    .catch(error => console.log(error))
-*/
+
 
 
 //Open edit
