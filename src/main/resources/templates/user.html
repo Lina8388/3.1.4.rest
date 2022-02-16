@@ -23,7 +23,6 @@
     <script type="text/javascript" src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-
 </head>
 <body>
 
@@ -51,7 +50,7 @@
         <nav class="col-md-2 m-0 p-0 pt-4 ">
             <div class="sidebar-sticky">
                 <br>
-                <a href="/users" class="nav-link  btn-block" role="button">Admin</a>
+                <a href="/admin" class="nav-link  btn-block" role="button">Admin</a>
                 <a href="/user" class="btn btn-primary btn-block active" role="button">User</a>
             </div>
         </nav>
@@ -99,24 +98,20 @@
 <script>
 
 
-    const url = 'http://localhost:8080/admin'
-
-
-
-
+    const url = 'http://localhost:8080/api/admin'
 
     /*таблица*/
     const getPost = document.querySelector('tbody');
 
-    let output ='';
+    let output = '';
 
     fetch(url, {
         mode: "no-cors",
     })
         .then(res => res.json())
         .then(data => {
-            data.forEach(user =>{
-                output+=`<tr>
+            data.forEach(user => {
+                output += `<tr>
                                     <td >${user.id}</td>
                                     <td >${user.name}</td>
                                     <td >${user.surname}</td>
@@ -124,9 +119,9 @@
                                     <td >${user.email}</td>
 <td > `
                 for (const r of user.roles) {
-                    output += r.role + " ";
+                    output += r.role.replace('ROLE_', '') + " ";
                 }
-                output+=`</td></tr>`;
+                output += `</td></tr>`;
             });
 
             getPost.innerHTML = output;

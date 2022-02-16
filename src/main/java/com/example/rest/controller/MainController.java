@@ -27,7 +27,7 @@ public class MainController {
         return "login";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/admin")
     public String getPage(Model model, Principal principal) {
 
         model.addAttribute("principal", userService.getUserByName(principal.getName()).getRolesString());
@@ -41,8 +41,11 @@ public class MainController {
         return "user";
     }
 
-
-
+    @GetMapping("admin/new")
+    public String newUser(Model model) {
+        model.addAttribute("AllRoles", userService.getListRoles());
+        return "users";
+    }
 
 
 }
