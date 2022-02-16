@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping()
+@RequestMapping("api/")
 public class RESTController {
 
     private UserService userService;
@@ -29,15 +29,9 @@ public class RESTController {
 
 
 
- /*   @GetMapping("/admin")
-    public ResponseEntity<List<User>> apiGetAllUsers() {
-        List<User> users = userService.getListUsers();
-        return new ResponseEntity<>(users, HttpStatus.OK);
-    }*/
-
- @GetMapping("admin")
- public ResponseEntity<List<User>> getListUsers() {
-     return new ResponseEntity<>(userService.getListUsers(), HttpStatus.OK);
+    @GetMapping("admin")
+    public ResponseEntity<List<User>> getListUsers() {
+        return new ResponseEntity<>(userService.getListUsers(), HttpStatus.OK);
     }
 
 
@@ -47,44 +41,25 @@ public class RESTController {
     }
 
 
-
     @PostMapping("admin")
-    public ResponseEntity<User>  addUser(@RequestBody  User user) {
-         userService.add(user);
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        userService.add(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
 
-
-
     @PutMapping(value = "admin/{id}")
-    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody  User user) {
+    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user) {
         userService.update(user, id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
 
-
     @DeleteMapping(value = "admin/{id}")
-    public void removeUser(@PathVariable Long id) {
+    public void deleteUser(@PathVariable Long id) {
         userService.removeUser(id);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -27,22 +27,25 @@ public class MainController {
         return "login";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/admin")
     public String getPage(Model model, Principal principal) {
 
         model.addAttribute("principal", userService.getUserByName(principal.getName()).getRolesString());
         return "users";
     }
 
+    @GetMapping("/user")
+    public String getUserPage(Model model, Principal principal) {
 
-  /*  @GetMapping("admin/new")
-    public String newUser(Model model,Principal principal) {
+        model.addAttribute("principal", userService.getUserByName(principal.getName()).getRolesString());
+        return "user";
+    }
 
-
-        return "new";
-    }*/
-
-
+    @GetMapping("admin/new")
+    public String newUser(Model model) {
+        model.addAttribute("AllRoles", userService.getListRoles());
+        return "users";
+    }
 
 
 }
