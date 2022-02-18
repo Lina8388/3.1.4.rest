@@ -29,7 +29,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User getUserByEmail(String email) {
         return entityManager
-                .createQuery(" SELECT u FROM User u WHERE u.email =:email", User.class)
+                .createQuery(" SELECT u FROM User u JOIN FETCH u.roles WHERE u.email =:email", User.class)
                 .setParameter("email", email)
                 .getSingleResult();
     }
@@ -66,7 +66,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Role getRoleByName(String roleName) {
         return entityManager
-                .createQuery(" SELECT u FROM Role u WHERE u.role =:role", Role.class)
+                .createQuery(" SELECT  u FROM Role u   WHERE u.role =:role", Role.class)
                 .setParameter("role", roleName)
                 .getSingleResult();
     }

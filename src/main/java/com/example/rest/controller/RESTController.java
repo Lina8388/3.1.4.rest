@@ -1,6 +1,5 @@
 package com.example.rest.controller;
 
-import com.example.rest.dao.UserDao;
 import com.example.rest.model.User;
 import com.example.rest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +14,11 @@ import java.util.List;
 public class RESTController {
 
     private UserService userService;
-    private UserDao userDao;
+
 
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
-    }
-
-    @Autowired
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
     }
 
 
