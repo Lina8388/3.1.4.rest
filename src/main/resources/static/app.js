@@ -225,3 +225,49 @@ formD.addEventListener('submit', e => {
 
 
 
+const URL2 = 'http://91.241.64.178:7081/api/users'
+
+fetch(URL2, {
+    method: 'Post',
+    headers: {
+        'Content-Type': 'application/json'},
+    body: JSON.stringify(
+        {
+            "id": 3,
+            "name": "James",
+            "lastName": "Brown",
+            "age": 23
+        }
+    )
+
+
+    })
+
+    .then(res=> console.log(res.json()) )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
